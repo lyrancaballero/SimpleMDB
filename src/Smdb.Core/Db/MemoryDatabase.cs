@@ -67,4 +67,8 @@ public class MemoryDatabase
             new Movie(50, "The Social Network", 2010, "Facebook’s founding sparks friendship and legal battles.")
         });
     }
+    public int NextMovieId()
+    {
+        return ++nextMovieId;
+    }
 }
