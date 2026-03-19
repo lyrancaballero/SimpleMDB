@@ -1,15 +1,29 @@
 namespace Smdb.Core.Db;
 
 using Smdb.Core.Movies;
+using Smdb.Core.Users;
+
 public class MemoryDatabase
 {
+    //Movies
     public List<Movie> Movies { get; }
     private int nextMovieId;
+
+    //Users
+    public List<User> Users { get; }
+    private int nextUserId;
+
     public MemoryDatabase()
     {
+        //Movies
         Movies = [];
         SeedMovies();
         nextMovieId = Movies.Count;
+
+        //Users
+        Users = [];
+        SeedUsers();
+        nextUserId = Users.Count;
     }
     private void SeedMovies()
     {
@@ -67,8 +81,28 @@ public class MemoryDatabase
             new Movie(50, "The Social Network", 2010, "Facebook’s founding sparks friendship and legal battles.")
         });
     }
+
+    //Users
+    private void SeedUsers()
+    {
+        Users.AddRange(new User[]
+        {
+        new User(1, "admin", "admin123", "admin"),
+        new User(2, "john", "pass123", "user"),
+        new User(3, "mary", "pass123", "user")
+        });
+    }
+
+
     public int NextMovieId()
     {
         return ++nextMovieId;
+    }
+
+    //Users
+
+    public int NextUserId()
+    {
+        return ++nextUserId;
     }
 }

@@ -1,0 +1,12 @@
+namespace Smdb.Core.Users;
+
+using Shared.Http;
+
+public interface IUsersRepository
+{
+    Task<PagedResult<User>?> ReadUsers(int page, int size);
+    Task<User?> CreateUser(User newUser);
+    Task<User?> ReadUser(int id);
+    Task<User?> UpdateUser(int id, User newData);
+    Task<User?> DeleteUser(int id);
+}

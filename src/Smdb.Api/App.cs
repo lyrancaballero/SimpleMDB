@@ -5,6 +5,10 @@ using Shared.Http;
 using Smdb.Api.Movies;
 using Smdb.Core.Movies;
 using Smdb.Core.Db;
+//Users
+using Smdb.Core.Users;
+using Smdb.Api.Users;
+
 
 
 public class App : HttpServer
@@ -33,5 +37,19 @@ public class App : HttpServer
 
         router.UseRouter("/api/v1", apiRouter);
         apiRouter.UseRouter("/movies", movieRouter);
+
+        //Users Start
+
+        var usersRepo = new MemoryUsersRepository(db);
+        var usersServ = new DefaultUsersService(usersRepo);
+        var usersCtrl = new UsersController(usersServ);
+        var usersRouter = new UsersRouter(usersCtrl);
+
+        apiRouter.UseRouter("/users", usersRouter);
+
+        //Users End
     }
+
+
+
 }
