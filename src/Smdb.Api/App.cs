@@ -13,6 +13,10 @@ using Smdb.Api.Users;
 using Smdb.Core.Actors;
 using Smdb.Api.Actors;
 
+//ActorsMovies
+using Smdb.Core.ActorsMovies;
+using Smdb.Api.ActorsMovies;
+
 
 
 
@@ -64,8 +68,19 @@ public class App : HttpServer
         apiRouter.UseRouter("/actors", actorsRouter);
 
         //Actors End
-    }
 
+
+        //ActorsMovies Start
+
+        var amRepo = new MemoryActorsMoviesRepository(db);
+        var amServ = new DefaultActorsMoviesService(amRepo);
+        var amCtrl = new ActorsMoviesController(amServ);
+        var amRouter = new ActorsMoviesRouter(amCtrl);
+
+        apiRouter.UseRouter("/actors-movies", amRouter);
+
+        //ActorsMovies End
+    }
 
 
 }

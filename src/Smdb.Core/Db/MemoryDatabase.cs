@@ -3,6 +3,7 @@ namespace Smdb.Core.Db;
 using Smdb.Core.Movies;
 using Smdb.Core.Users;
 using Smdb.Core.Actors;
+using Smdb.Core.ActorsMovies;
 
 public class MemoryDatabase
 {
@@ -14,9 +15,14 @@ public class MemoryDatabase
     public List<User> Users { get; }
     private int nextUserId;
 
-    //Actors
+    //ActorsMovies
+    public List<ActorMovie> ActorsMovies { get; }
+    private int nextActorMovieId;
+
+    // Actors
     public List<Actor> Actors { get; }
     private int nextActorId;
+
 
 
     public MemoryDatabase()
@@ -31,10 +37,16 @@ public class MemoryDatabase
         SeedUsers();
         nextUserId = Users.Count;
 
-        //Actors
+        //ActorsMovies
+        ActorsMovies = [];
+        SeedActorsMovies();
+        nextActorMovieId = ActorsMovies.Count;
+
+        // Actors
         Actors = [];
         SeedActors();
         nextActorId = Actors.Count;
+
 
 
     }
@@ -106,7 +118,18 @@ public class MemoryDatabase
         });
     }
 
-    //Actors
+    //ActorsMovies
+    private void SeedActorsMovies()
+    {
+        ActorsMovies.AddRange(new ActorMovie[]
+        {
+        new ActorMovie(1, 1, 1), // De Niro → The Godfather
+        new ActorMovie(2, 2, 1), // Pacino → The Godfather
+        new ActorMovie(3, 3, 10) // DiCaprio → Inception
+        });
+    }
+
+    // Actors
     private void SeedActors()
     {
         Actors.AddRange(new Actor[]
@@ -120,7 +143,7 @@ public class MemoryDatabase
     }
 
 
-    //Movies
+
 
     public int NextMovieId()
     {
@@ -132,6 +155,12 @@ public class MemoryDatabase
     public int NextUserId()
     {
         return ++nextUserId;
+    }
+
+    //ActorsMovies
+    public int NextActorMovieId()
+    {
+        return ++nextActorMovieId;
     }
 
     //Actors
