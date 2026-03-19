@@ -2,6 +2,7 @@ namespace Smdb.Core.Db;
 
 using Smdb.Core.Movies;
 using Smdb.Core.Users;
+using Smdb.Core.Actors;
 
 public class MemoryDatabase
 {
@@ -12,6 +13,11 @@ public class MemoryDatabase
     //Users
     public List<User> Users { get; }
     private int nextUserId;
+
+    //Actors
+    public List<Actor> Actors { get; }
+    private int nextActorId;
+
 
     public MemoryDatabase()
     {
@@ -24,6 +30,13 @@ public class MemoryDatabase
         Users = [];
         SeedUsers();
         nextUserId = Users.Count;
+
+        //Actors
+        Actors = [];
+        SeedActors();
+        nextActorId = Actors.Count;
+
+
     }
     private void SeedMovies()
     {
@@ -93,6 +106,21 @@ public class MemoryDatabase
         });
     }
 
+    //Actors
+    private void SeedActors()
+    {
+        Actors.AddRange(new Actor[]
+        {
+        new Actor(1, "Robert De Niro", 1943),
+        new Actor(2, "Al Pacino", 1940),
+        new Actor(3, "Leonardo DiCaprio", 1974),
+        new Actor(4, "Morgan Freeman", 1937),
+        new Actor(5, "Scarlett Johansson", 1984)
+        });
+    }
+
+
+    //Movies
 
     public int NextMovieId()
     {
@@ -105,4 +133,12 @@ public class MemoryDatabase
     {
         return ++nextUserId;
     }
+
+    //Actors
+    public int NextActorId()
+    {
+        return ++nextActorId;
+    }
+
+
 }

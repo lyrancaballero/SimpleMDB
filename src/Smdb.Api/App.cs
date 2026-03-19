@@ -9,6 +9,11 @@ using Smdb.Core.Db;
 using Smdb.Core.Users;
 using Smdb.Api.Users;
 
+//Actors
+using Smdb.Core.Actors;
+using Smdb.Api.Actors;
+
+
 
 
 public class App : HttpServer
@@ -48,6 +53,17 @@ public class App : HttpServer
         apiRouter.UseRouter("/users", usersRouter);
 
         //Users End
+
+        //Actors Start
+
+        var actorsRepo = new MemoryActorsRepository(db);
+        var actorsServ = new DefaultActorsService(actorsRepo);
+        var actorsCtrl = new ActorsController(actorsServ);
+        var actorsRouter = new ActorsRouter(actorsCtrl);
+
+        apiRouter.UseRouter("/actors", actorsRouter);
+
+        //Actors End
     }
 
 
