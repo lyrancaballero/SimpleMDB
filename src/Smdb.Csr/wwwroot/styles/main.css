@@ -1,0 +1,511 @@
+/* ------------------------------------------------------------
+   CYBERPUNK DARK MODE – Enhanced Legibility
+   Improved contrast, softer neon, clean typography
+------------------------------------------------------------ */
+
+:root {
+  --bg-primary: #0b0e17;
+  --bg-secondary: #11141f;
+  --bg-card: #151a28;
+  --bg-elevated: #1e2438;
+  --text-primary: #f0f3fa;
+  --text-secondary: #cbd5e6;
+  --text-muted: #8e9bb5;
+  --accent-cyan: #2dd4bf;
+  --accent-magenta: #f472b6;
+  --accent-green: #4ade80;
+  --accent-yellow: #facc15;
+  --accent-red: #fb7185;
+  --border-subtle: rgba(45, 212, 191, 0.25);
+  --glow-cyan: rgba(45, 212, 191, 0.4);
+  --card-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.55;
+  min-height: 100vh;
+}
+
+/* Optional subtle grid pattern (soft, not distracting) */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(45, 212, 191, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45, 212, 191, 0.02) 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ------------------------------------------------------------
+   Typography – clean & readable
+------------------------------------------------------------ */
+a {
+  text-decoration: none;
+  color: var(--accent-cyan);
+  font-weight: 500;
+  transition: color 0.2s, text-shadow 0.2s;
+}
+
+a:hover {
+  color: var(--accent-magenta);
+  text-decoration: underline;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  background: linear-gradient(135deg, #ffffff, var(--accent-cyan));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: none;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+p {
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+}
+
+.meta {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  border-left: 3px solid var(--accent-cyan);
+  padding-left: 0.75rem;
+}
+
+/* ------------------------------------------------------------
+   Layout containers
+------------------------------------------------------------ */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+  width: 100%;
+}
+
+main {
+  flex: 1;
+  position: relative;
+  z-index: 2;
+}
+
+/* ------------------------------------------------------------
+   Header & Navigation – semi-transparent but legible
+------------------------------------------------------------ */
+header {
+  background: rgba(11, 14, 23, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--accent-cyan);
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  list-style: none;
+}
+
+/* ------------------------------------------------------------
+   Buttons – readable contrast
+------------------------------------------------------------ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(20, 25, 40, 0.8);
+  color: var(--accent-cyan);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  gap: 0.5rem;
+}
+
+.btn:hover {
+  background: var(--accent-cyan);
+  color: #0b0e17;
+  border-color: var(--accent-cyan);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+.btn.primary {
+  background: var(--accent-cyan);
+  border: none;
+  color: #0b0e17;
+  box-shadow: 0 2px 8px var(--glow-cyan);
+  font-weight: 700;
+}
+
+.btn.primary:hover {
+  background: #2dd4bf;
+  filter: brightness(1.05);
+  transform: scale(1.01);
+}
+
+.btn.danger {
+  border-color: var(--accent-red);
+  color: var(--accent-red);
+}
+
+.btn.danger:hover {
+  background: var(--accent-red);
+  color: #0b0e17;
+  border-color: var(--accent-red);
+}
+
+.btn-view,
+.btn-edit {
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+}
+
+.btn-view:hover,
+.btn-edit:hover {
+  background: var(--accent-green);
+  color: #0b0e17;
+}
+
+/* ------------------------------------------------------------
+   Status messages – high legibility
+------------------------------------------------------------ */
+.status {
+  background: var(--bg-secondary);
+  border-left: 4px solid var(--accent-cyan);
+  padding: 0.9rem 1.2rem;
+  border-radius: 0.75rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.ok {
+  border-left-color: var(--accent-green);
+  background: rgba(74, 222, 128, 0.1);
+  color: #bbf7d0;
+}
+
+.err {
+  border-left-color: var(--accent-red);
+  background: rgba(251, 113, 133, 0.1);
+  color: #fecdd3;
+}
+
+.warn {
+  border-left-color: var(--accent-yellow);
+  background: rgba(250, 204, 21, 0.1);
+  color: #fef9c3;
+}
+
+.disabled,
+.btn.disabled,
+a.disabled,
+button.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  filter: grayscale(0.2);
+  transform: none;
+}
+
+/* ------------------------------------------------------------
+   Forms – clean and readable
+------------------------------------------------------------ */
+form {
+  background: var(--bg-card);
+  padding: 1.8rem;
+  border-radius: 1rem;
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--card-shadow);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.field label {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--accent-cyan);
+  letter-spacing: 0.3px;
+}
+
+.field input,
+.field textarea,
+select {
+  background: var(--bg-secondary);
+  border: 1px solid #2a3348;
+  padding: 0.7rem 1rem;
+  border-radius: 0.6rem;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.field input:focus,
+.field textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 0 2px rgba(45, 212, 191, 0.2);
+  background: var(--bg-elevated);
+}
+
+.field textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+/* ------------------------------------------------------------
+   Movie cards – clear separation
+------------------------------------------------------------ */
+.grid.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.card {
+  background: var(--bg-card);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  border: 1px solid var(--border-subtle);
+  transition: all 0.2s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.card h3 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-weight: 700;
+  color: white;
+}
+
+.badge.year {
+  background: rgba(45, 212, 191, 0.15);
+  padding: 0.2rem 0.7rem;
+  border-radius: 2rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  border: 0.5px solid var(--accent-cyan);
+}
+
+.row-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+/* ------------------------------------------------------------
+   Pagination controls
+------------------------------------------------------------ */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.7rem;
+  background: var(--bg-secondary);
+  padding: 0.75rem 1.2rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border-subtle);
+  margin-bottom: 0.5rem;
+}
+
+.badge {
+  background: var(--bg-elevated);
+  padding: 0.3rem 0.9rem;
+  border-radius: 2rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+}
+
+#page-num {
+  background: #1a1f30;
+  color: var(--accent-magenta);
+}
+
+.page-size-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.page-size-container select {
+  background: var(--bg-secondary);
+  border-color: var(--border-subtle);
+  padding: 0.3rem 1.5rem 0.3rem 0.7rem;
+  font-size: 0.8rem;
+  border-radius: 0.5rem;
+}
+
+/* ------------------------------------------------------------
+   Table view – readable data
+------------------------------------------------------------ */
+.table {
+  width: 100%;
+  background: var(--bg-card);
+  border-radius: 1rem;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+}
+
+.table th,
+.table td {
+  padding: 1rem 1.2rem;
+  text-align: left;
+  border-bottom: 1px solid #1f2538;
+  vertical-align: top;
+}
+
+.table th {
+  background: var(--bg-secondary);
+  font-weight: 700;
+  width: 160px;
+  color: var(--accent-cyan);
+}
+
+.table td {
+  color: var(--text-secondary);
+}
+
+.table tr:last-child td,
+.table tr:last-child th {
+  border-bottom: none;
+}
+
+/* ------------------------------------------------------------
+   Scrollbar – subtle neon
+------------------------------------------------------------ */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-cyan);
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-magenta);
+}
+
+/* ------------------------------------------------------------
+   Selection color
+------------------------------------------------------------ */
+::selection {
+  background: var(--accent-cyan);
+  color: #0b0e17;
+}
+
+/* ------------------------------------------------------------
+   Responsive adjustments
+------------------------------------------------------------ */
+@media (max-width: 720px) {
+  header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .page-size-container {
+    margin-left: 0;
+  }
+  .grid.cards {
+    grid-template-columns: 1fr;
+  }
+  .table th,
+  .table td {
+    padding: 0.75rem;
+  }
+}
+
+/* remove spin buttons for cleaner look */
+input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  opacity: 0.5;
+}
