@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Edit Actor • Simple Movie Database</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <script type="module" src="/scripts/actors/edit.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Edit Actor</h1>
+      <nav>
+        <ul>
+          <li><a href="/" class="btn">Home</a></li>
+          <li><a href="/actors/index.html" class="btn">All Actors</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="container">
+      <div id="status" class="status">Loading...</div>
+      <form id="actor-form" class="grid">
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" required />
+        </div>
+        <div class="field">
+          <label for="birthYear">Birth Year</label>
+          <input
+            id="birthYear"
+            name="birthYear"
+            type="number"
+            min="1800"
+            max="2025"
+          />
+        </div>
+        <div class="form-actions">
+          <button class="btn primary" type="submit">Save Changes</button>
+          <a class="btn" href="/actors/index.html">Cancel</a>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>

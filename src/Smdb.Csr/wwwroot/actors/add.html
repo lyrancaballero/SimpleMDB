@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Add Actor • Simple Movie Database</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <script type="module" src="/scripts/actors/add.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Add Actor</h1>
+      <nav>...</nav>
+    </header>
+    <main class="container">
+      <div id="status" class="status">Ready</div>
+      <form id="actor-form">
+        <div class="field"><label>Name</label><input id="name" required /></div>
+        <div class="field">
+          <label>Birth Year</label><input id="birthYear" type="number" />
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn primary">Create</button
+          ><a href="/actors/index.html" class="btn">Cancel</a>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Add Actor-Movie Link</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+    <script type="module" src="/scripts/actors-movies/add.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Link Actor to Movie</h1>
+      <nav>...</nav>
+    </header>
+    <main class="container">
+      <div id="status" class="status">Loading actors and movies...</div>
+      <form id="am-form">
+        <div class="field">
+          <label>Actor</label
+          ><select id="actorId" required></select>
+        </div>
+        <div class="field">
+          <label>Movie</label
+          ><select id="movieId" required></select>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn primary">Create Link</button
+          ><a href="/actors-movies/index.html" class="btn">Cancel</a>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>

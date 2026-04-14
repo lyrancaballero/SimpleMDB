@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Actors • Simple Movie Database</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <script type="module" src="/scripts/actors/index.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Actors</h1>
+      <nav>
+        <ul>
+          <li><a href="/" class="btn">Home</a></li>
+          <li><a href="/actors/add.html" class="btn">Add Actor</a></li>
+          <li><a href="/movies/index.html" class="btn">Movies</a></li>
+          <li><a href="/users/index.html" class="btn">Users</a></li>
+          <li>
+            <a href="/actors-movies/index.html" class="btn">Actors ⇄ Movies</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="container">
+      <div id="status" class="status">Loading...</div>
+      <div class="controls">...</div>
+      <div id="actor-list" class="grid cards"></div>
+    </main>
+    <template id="actor-card">
+      <div class="card">
+        <h3>
+          <span class="name"></span>
+          <span class="badge birth-year"></span>
+        </h3>
+        <div class="row-actions">
+          <a class="btn btn-view">View</a>
+          <a class="btn btn-edit">Edit</a>
+          <button class="btn danger btn-delete">Remove</button>
+        </div>
+      </div>
+    </template>
+  </body>
+</html>
